@@ -11,7 +11,7 @@ const reloadIcon = document.querySelector(".fa");
 
 form.addEventListener("submit", addNewTask);
 clearBtn.addEventListener("click", clearAllTasks);
-filter.addEventListener("keypress", filterTasks);
+filter.addEventListener("keyup", filterTasks);
 taskList.addEventListener('click', removeTask);
 reloadIcon.addEventListener('click', reloadPage);
 // Event Handlers
@@ -21,10 +21,12 @@ function addNewTask(e) {
 
     if (taskInput.value === '') {
         taskInput.style.borderColor = "red";
+        taskInput.style.boxShadow = "none";
         return;
     }
 
     taskInput.style.borderColor = "initial";
+    taskInput.style.boxShadow = "initial";
 
     // Create an li element when the user adds a task 
     const li = document.createElement('li');
