@@ -11,7 +11,7 @@ const reloadIcon = document.querySelector(".fa");
 
 form.addEventListener("submit", addNewTask);
 clearBtn.addEventListener("click", clearAllTasks);
-filter.addEventListener("keydown", filterTasks);
+filter.addEventListener("keypress", filterTasks);
 taskList.addEventListener('click', removeTask);
 reloadIcon.addEventListener('click', reloadPage);
 // Event Handlers
@@ -41,6 +41,8 @@ function addNewTask(e) {
     li.appendChild(link);
     // Append to ul 
     taskList.appendChild(li);
+
+    taskInput.value = '';;
 }
 
 function clearAllTasks(e) {
@@ -60,4 +62,16 @@ function reloadPage() {
 }
 
 function filterTasks(e) {
+
+    let filterSearch = filter.value;
+    let listItems = document.querySelectorAll(".collection-item");
+    
+    listItems.forEach((item) => {
+        if (item.textContent.indexOf(filterSearch)){
+            item.style.display = "none";
+        }
+        else{
+            item.style.display = "block";
+        }
+    })
 }
