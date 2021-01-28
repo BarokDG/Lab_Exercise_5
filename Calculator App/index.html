@@ -15,26 +15,35 @@
 <body>
     <div class="container">
         <input type="text" name="" id="" class="input" value="0" onfocus="this.value=''">
-        <button class="opbutton">+</button>
-        <button class="opbutton">-</button>
-        <button class="opbutton">*</button>
-        <button class="opbutton">/</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="opbutton">^2</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="opbutton">SQRT</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button class="equalsign" style="grid-column: 4; grid-row: 5/7;">=</button>
-        <button>0</button>
-        <button>.</button>
-        <button>CE</button>
+        
+        <button value="square" class="opbutton extra top">^2</button>
+        <button value="cube" class="opbutton extra top">^3</button>
+        <button value="sqrt" class="opbutton extra top">SQRT</button>
+        <button value="avg" class="opbutton top">Avg.</button>
+
+        <button value="add" class="opbutton">+</button>
+        <button value="subtract" class="opbutton">-</button>
+        <button value="multiply" class="opbutton">*</button>
+        <button value="divide" class="opbutton">/</button>
+
+        <button value="7">7</button>
+        <button value="8">8</button>
+        <button value="9">9</button>
+        <button value="4">4</button>
+        <button value="5">5</button>
+        <button value="6">6</button>
+        <button value="1">1</button>
+        <button value="2">2</button>
+        <button value="3">3</button>
+
+        <button value="equalsign" class="equalsign opbutton">=</button>
+        <button value="0">0</button>
+        <button value=".">.</button>
+        <button class="clear opbutton" value="clear">CE</button>
+
     </div>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
