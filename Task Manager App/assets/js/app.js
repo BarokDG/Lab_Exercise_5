@@ -6,8 +6,8 @@ const filter = document.querySelector("#filter");
 const taskList = document.querySelector(".collection");
 const clearBtn = document.querySelector(".clear-tasks");
 const reloadIcon = document.querySelector(".fa");
-const Ascending = document.querySelector('#asc');
-const Descending = document.querySelector('#desc');
+const ascending = document.querySelector('#asc');
+const descending = document.querySelector('#desc');
 
 // Events
 
@@ -16,8 +16,8 @@ clearBtn.addEventListener("click", clearAllTasks);
 filter.addEventListener("keyup", filterTasks);
 taskList.addEventListener('click', removeTask);
 reloadIcon.addEventListener('click', reloadPage);
-Ascending.addEventListener('click', sortAsc);
-Descending.addEventListener('click', sortDesc);
+ascending.addEventListener('click', sortAsc);
+descending.addEventListener('click', sortDesc);
 // Event Handlers
 
 function addNewTask(e) {
@@ -110,7 +110,23 @@ function filterTasks(e) {
     })
 }
 
-function descSort(arr) {
+// sorting algorithms
+
+function ascend(arr) {
+    var len = arr.length;
+    for (var i = len - 1; i >= 0; i--) {
+        for (var j = 1; j <= i; j++) {
+            if (arr[j - 1].innerText > arr[j].innerText) {
+                var temp = arr[j - 1];
+                arr[j - 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+function descend(arr) {
     var len = arr.length;
     for (var i = len - 1; i >= 0; i--) {
         for (var j = 1; j <= i; j++) {
@@ -124,38 +140,23 @@ function descSort(arr) {
     return arr;
 }
 
-function sortDesc() {
-    const divDate = document.querySelectorAll(".div-date");
-    const taskDates = Array.from(divDate);
-    const dates = descSort(taskDates);
-    taskList.innerHTML = "";
-    dates.forEach((date) => {
-        taskList.appendChild(date.parentElement);
-    });
-}
-
-
-
+// dropdown functions
 function sortAsc() {
     const divDate = document.querySelectorAll(".div-date");
     const taskDates = Array.from(divDate);
-    const dates = ascSort(taskDates);
+    const dates = ascend(taskDates);
     taskList.innerHTML = ""
     dates.forEach((date) => {
         taskList.appendChild(date.parentElement);
     });
 }
 
-function ascSort(arr) {
-    var len = arr.length;
-    for (var i = len - 1; i >= 0; i--) {
-        for (var j = 1; j <= i; j++) {
-            if (arr[j - 1].innerText > arr[j].innerText) {
-                var temp = arr[j - 1];
-                arr[j - 1] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    return arr;
+function sortDesc() {
+    const divDate = document.querySelectorAll(".div-date");
+    const taskDates = Array.from(divDate);
+    const dates = descend(taskDates);
+    taskList.innerHTML = "";
+    dates.forEach((date) => {
+        taskList.appendChild(date.parentElement);
+    });
 }
